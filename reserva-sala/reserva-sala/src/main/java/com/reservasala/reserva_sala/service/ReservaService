@@ -1,0 +1,13 @@
+@Service
+public class ReservaService {
+    @Autowired
+    private ReservaRepository repository;
+
+    public List<Reserva> listar() {
+        return repository.findAll();
+    }
+
+    public Reserva salvar(Reserva reserva) {
+        return repository.save(reserva);
+    }
+}
