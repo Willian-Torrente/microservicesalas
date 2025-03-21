@@ -1,3 +1,13 @@
+package com.reservasala.reserva_sala.service;
+
+import com.reservasala.reserva_sala.model.Usuario;
+import com.reservasala.reserva_sala.repository.UsuarioRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class UsuarioService {
     @Autowired
