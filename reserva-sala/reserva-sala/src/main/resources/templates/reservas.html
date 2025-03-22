@@ -7,8 +7,8 @@
     <h2>Reservas de Salas</h2>
     <ul>
         <li th:each="reserva : ${reservas}">
-            Sala: <span th:text="${reserva.sala.nome}"></span> - 
-            Usuário: <span th:text="${reserva.usuario.nome}"></span> - 
+            Sala: <span th:text="${reserva.sala.nome}"></span> -
+            Usuário: <span th:text="${reserva.usuario.nome}"></span> -
             Data: <span th:text="${reserva.dataHora}"></span>
         </li>
     </ul>
@@ -18,7 +18,7 @@
             <option value="" disabled selected>Selecione a Sala</option>
             <option th:each="sala : ${salas}" th:value="${sala.id}" th:text="${sala.nome}"></option>
         </select>
-        
+
         <select name="usuarioId" required>
             <option value="" disabled selected>Selecione o Usuário</option>
             <option th:each="usuario : ${usuarios}" th:value="${usuario.id}" th:text="${usuario.nome}"></option>
