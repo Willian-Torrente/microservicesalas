@@ -1,4 +1,4 @@
-package com.reservasala.reserva_sala.model;
+package com.reservasala.reserva.model;
 
 import java.time.LocalDateTime;
 

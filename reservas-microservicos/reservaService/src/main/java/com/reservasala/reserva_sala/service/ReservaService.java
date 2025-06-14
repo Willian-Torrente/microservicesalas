@@ -1,12 +1,10 @@
-package com.reservasala.reserva_sala.service;
-
-import com.reservasala.reserva_sala.model.Reserva;
-import com.reservasala.reserva_sala.repository.ReservaRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+package com.reservasala.reserva.service;
 
 import java.util.List;
 import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 public class ReservaService {

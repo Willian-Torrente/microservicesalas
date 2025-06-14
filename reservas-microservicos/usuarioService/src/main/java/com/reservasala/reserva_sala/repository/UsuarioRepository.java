@@ -1,9 +1,8 @@
-package com.reservasala.reserva_sala.repository;
-
-import com.reservasala.reserva_sala.model.Usuario;
-import org.springframework.data.jpa.repository.JpaRepository;
+package com.reservasala.reserva.repository;
 
 import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     Optional<Usuario> findByEmail(String email);

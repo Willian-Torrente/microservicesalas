@@ -1,4 +1,4 @@
-package com.reservasala.reserva_sala;
+package com.reservasala.reserva;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

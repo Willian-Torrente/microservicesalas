@@ -1,7 +1,5 @@
-package com.reservasala.reserva_sala.controller;
+package com.reservasala.reserva.controller;
 
-import com.reservasala.reserva_sala.model.Usuario;
-import com.reservasala.reserva_sala.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
