@@ -1,4 +1,4 @@
-package com.reservasala.reserva;
+package com.reservasala.reserva_sala;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

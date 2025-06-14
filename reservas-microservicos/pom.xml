@@ -18,10 +18,10 @@
     </parent>
 
     <modules>
-        <module>usuarioService</module>
-        <module>salaService</module>
-        <module>reservaService</module>
-        <module>gatewayService</module>
+        <module>./usuarioService</module>
+        <module>./salaService</module>
+        <module>./reservaService</module>
+        <module>./gatewayService</module>
     </modules>
 
     <properties>

@@ -1,4 +1,4 @@
-package com.reservasala.reserva.service;
+package com.reservasala.reserva_sala.service;
 
 import java.util.List;
 import java.util.Optional;

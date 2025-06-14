@@ -1,4 +1,4 @@
-package com.reservasala.reserva.repository;
+package com.reservasala.reserva_sala.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

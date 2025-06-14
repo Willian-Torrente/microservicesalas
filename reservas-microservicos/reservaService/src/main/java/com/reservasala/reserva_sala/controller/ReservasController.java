@@ -1,4 +1,4 @@
-package com.reservasala.reserva.controller;
+package com.reservasala.reserva_sala.controller;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
