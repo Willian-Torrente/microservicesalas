@@ -1,5 +1,5 @@
 package com.reservasala.reserva_sala.service;
-import com.reservasala.reserva.model.Sala;
+import com.reservasala.reserva_sala.model.Sala;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;

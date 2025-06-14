@@ -1,20 +1,19 @@
 # Estágio de Build Otimizado
-FROM maven:3.8.4-openjdk-17 AS build
-WORKDIR /app/gatewayService
+FROM maven:3.9.6-eclipse-temurin-17 AS build
+WORKDIR /app
 
-# Copia o parent pom.xml para o diretório do módulo
-COPY ../pom.xml ../pom.xml
+# Copia o parent pom.xml e o pom.xml do módulo
+COPY ../pom.xml pom.xml
+COPY pom.xml gatewayService/pom.xml
 
-# Copia o pom.xml e o src do módulo gatewayService
-COPY gatewayService/pom.xml ./pom.xml
-COPY gatewayService/src ./src
+# Copia o código-fonte do módulo
+COPY src ./src
 
 RUN mvn clean package -DskipTests
 
 # Estágio Final (imagem leve) - Permanece igual
-FROM openjdk:17-jdk-slim
+FROM eclipse-temurin:17-jre
 WORKDIR /app
-COPY --from=build /app/gatewayService/target/*.jar /app/service.jar
-
+COPY --from=build /app/target/*.jar app.jar
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "service.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]

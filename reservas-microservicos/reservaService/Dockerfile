@@ -1,20 +1,16 @@
 # --- Estágio 1: Build da Aplicação ---
-FROM maven:3.8.4-openjdk-17-slim AS build
-WORKDIR /app/reservaService
+FROM maven:3.9.6-eclipse-temurin-17 AS build
+WORKDIR /build
 
-# Copia o parent pom.xml para o diretório acima do módulo
-COPY ../pom.xml ../pom.xml
+COPY ../pom.xml pom.xml
+COPY reservaService/pom.xml reservaService/pom.xml
+COPY reservaService/src reservaService/src
 
-# Copia o pom.xml e o src do módulo reservaService
-COPY reservaService/pom.xml ./pom.xml
-COPY reservaService/src ./src
-
-RUN mvn clean package -DskipTests
+RUN mvn -f reservaService/pom.xml clean package -DskipTests
 
 # --- Estágio 2: Imagem Final de Produção ---
-FROM openjdk:17-jdk-slim
+FROM eclipse-temurin:17-jre
 WORKDIR /app
-ARG JAR_FILE_PATH=target/reserva-sala-0.0.1-SNAPSHOT.jar
-COPY --from=build /app/reservaService/${JAR_FILE_PATH} /app/application.jar
+COPY --from=build /build/reservaService/target/*.jar app.jar
 EXPOSE 8083
-ENTRYPOINT ["java", "-jar", "/app/application.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]

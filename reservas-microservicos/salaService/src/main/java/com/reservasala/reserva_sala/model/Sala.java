@@ -1,4 +1,4 @@
-package com.reservasala.reserva.model;
+package com.reservasala.reserva_sala.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

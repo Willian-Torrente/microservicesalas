@@ -6,6 +6,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.reservasala.reserva_sala.model.Reserva;
+import com.reservasala.reserva_sala.repository.ReservaRepository;
+
 @Service
 public class ReservaService {
 

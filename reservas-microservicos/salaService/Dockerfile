@@ -1,21 +1,19 @@
 # Dockerfile para o módulo salaService
 ###Para Produção
-# Etapa 1: Construção do JAR
-FROM maven:3.8.4-openjdk-17-slim AS build
+# --- Estágio 1: Build da Aplicação ---
+FROM maven:3.9.6-eclipse-temurin-17 AS build
+WORKDIR /build
+
+# Copia o parent pom.xml e o módulo salaService
+COPY ../pom.xml pom.xml
+COPY salaService/pom.xml salaService/pom.xml
+COPY salaService/src salaService/src
+
+RUN mvn -f salaService/pom.xml clean package -DskipTests
+
+# --- Estágio 2: Imagem Final de Produção ---
+FROM eclipse-temurin:17-jre
 WORKDIR /app
-
-# Copia o parent pom.xml
-COPY ../pom.xml ../pom.xml
-
-# Copia o pom.xml e o src do módulo salaService
-COPY salaService/pom.xml ./pom.xml
-COPY salaService/src ./src
-
-RUN mvn -f ./pom.xml clean package -DskipTests
-
-# Etapa 2: Imagem final com a aplicação
-FROM openjdk:17-jdk-slim
-WORKDIR /app
-COPY --from=build /app/target/sala-service*.jar /app/sala-service.jar
+COPY --from=build /build/salaService/target/*.jar app.jar
 EXPOSE 8082
-ENTRYPOINT ["java", "-jar", "sala-service.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]

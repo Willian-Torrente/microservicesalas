@@ -15,6 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
+import com.reservasala.reserva_sala.dto.SalaDTO;
+import com.reservasala.reserva_sala.dto.UsuarioDTO;
+import com.reservasala.reserva_sala.model.Reserva;
+import com.reservasala.reserva_sala.service.ReservaService;
+
 @Controller
 @RequestMapping("/reservas")
 public class ReservasController {
@@ -46,10 +51,11 @@ public class ReservasController {
 
     @PostMapping("/salvar")
     public String salvar(@RequestParam Long salaId, @RequestParam Long usuarioId, @RequestParam String dataHora) {
-        SalaDTO sala = restTemplate.getForObject(SALA_API_URL + "/" + salaId, SalaDTO.class);
-        UsuarioDTO usuario = restTemplate.getForObject(USUARIO_API_URL + "/" + usuarioId, UsuarioDTO.class);
+        Reserva reserva = new Reserva();
+        reserva.setDataHora(LocalDateTime.parse(dataHora));
+        reserva.setSalaId(salaId);
+        reserva.setUsuarioId(usuarioId);
 
-        Reserva reserva = new Reserva(null, LocalDateTime.parse(dataHora), sala, usuario);
         reservaService.salvar(reserva);
         return "redirect:/reservas";
     }
@@ -78,10 +84,12 @@ public class ReservasController {
 
     @PostMapping("/atualizar")
     public String atualizar(@RequestParam Long id, @RequestParam Long salaId, @RequestParam Long usuarioId, @RequestParam String dataHora) {
-        SalaDTO sala = restTemplate.getForObject(SALA_API_URL + "/" + salaId, SalaDTO.class);
-        UsuarioDTO usuario = restTemplate.getForObject(USUARIO_API_URL + "/" + usuarioId, UsuarioDTO.class);
+        Reserva reserva = new Reserva();
+        reserva.setId(id);
+        reserva.setDataHora(LocalDateTime.parse(dataHora));
+        reserva.setSalaId(salaId);
+        reserva.setUsuarioId(usuarioId);
 
-        Reserva reserva = new Reserva(id, LocalDateTime.parse(dataHora), sala, usuario);
         reservaService.atualizar(reserva);
         return "redirect:/reservas";
     }
