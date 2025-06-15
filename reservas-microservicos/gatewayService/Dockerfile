@@ -3,11 +3,11 @@ FROM maven:3.9.6-eclipse-temurin-17 AS build
 WORKDIR /app
 
 # Copia o parent pom.xml e o pom.xml do módulo
-COPY ../pom.xml pom.xml
-COPY pom.xml gatewayService/pom.xml
+COPY ../pom.xml ../
+COPY gatewayService/pom.xml pom.xml
 
 # Copia o código-fonte do módulo
-COPY src ./src
+COPY gatewayService/src ./src
 
 RUN mvn clean package -DskipTests
 
